@@ -3,6 +3,7 @@ from directions import *
 from context import *
 from util import *
 from help import *
+from bitcoin import *
 
 def handle(message, user):
     firstWord = message.split(' ')[0].lower()
@@ -22,7 +23,7 @@ def handle(message, user):
         r = helpMe(message)
     elif (message.strip().lower() in YES_OPTIONS):
         r = handleViaContext(user)
-    elif (message.strip().lower() == 'bitcoin price'):
+    elif (message.strip().lower() == 'bitcoin price' or message.strip().lower() == 'bitcoin'):
         r = bitcoinPrice()
     elif (message.strip().lower() == 'entertain me'):
         r = entertain()
