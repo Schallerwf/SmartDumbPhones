@@ -20,13 +20,12 @@ def handle(message, user):
         r = sendMe(message)
     elif (firstWord == 'help'):
         r = helpMe(message)
-    elif (firstWord == 'yes'):
+    elif (message.strip().lower() in YES_OPTIONS):
         r = handleViaContext(user)
-    elif (message.tolower() == 'bitcoin price'):
+    elif (message.strip().lower() == 'bitcoin price'):
         r = bitcoinPrice()
-    elif (message.tolower() == 'entertain me'):
+    elif (message.strip().lower() == 'entertain me'):
         r = entertain()
-
 
     writeContext(user, message)
     return r

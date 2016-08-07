@@ -12,10 +12,10 @@ def writeContext(user, data):
     wroteData = False
     for line in fileinput.input(['context.txt'], inplace = 1): 
         if (user in line):
-            print user + '\t' + data
+            print user + '\t' + data,
             wroteData = True
         else:
-            print line
+            print line,
 
     if (not wroteData):
         with open('context.txt', 'a') as context:

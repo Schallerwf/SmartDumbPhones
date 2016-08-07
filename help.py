@@ -26,10 +26,10 @@ def helpMe(message):
     elif (command == 'help'):
         r = 'Format: help <optional-command>\n'
         r += 'Purpose: Print helpful information like the text you are reading right now!'
-    elif (message.tolower() == 'bitcoin price'):
+    elif (message.strip().tolower() == 'bitcoin price'):
         r = 'Format: bitcoin price\n'
         r += 'Purpose: Get the current price of bitcoin in USD.'
-    elif (message.tolower() == 'entertain me'):
+    elif (message.strip().tolower() == 'entertain me'):
         r = 'Format: entertain me\n'
         r += 'Purpose: Bored with your dumb phone? Get a little entertainment.'
 
