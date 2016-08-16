@@ -15,7 +15,7 @@ def findBetween(string, first, last):
         return ''
 
 def stripHtmlTags(text):
-    return re.sub('<[^<]+?>', '', text)
+    return re.sub('<[^<]+?>', '', text.replace('&#160;', ''))
 
 def splitMessage(message):
     parts = []

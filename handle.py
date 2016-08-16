@@ -4,6 +4,7 @@ from context import *
 from util import *
 from help import *
 from bitcoin import *
+from surfline import *
 
 def handle(message, user):
     firstWord = message.split(' ')[0].lower()
@@ -21,8 +22,12 @@ def handle(message, user):
         r = sendMe(message)
     elif (firstWord == 'help'):
         r = helpMe(message)
+    elif (firstWord == 'more'):
+        r = handleViaContext(user)
     elif (message.strip().lower() in YES_OPTIONS):
         r = handleViaContext(user)
+    elif (message.strip().lower() in SURF_STATUS):
+        r = surfStatus(message)
     elif (message.strip().lower() == 'bitcoin price' or message.strip().lower() == 'bitcoin'):
         r = bitcoinPrice()
     elif (message.strip().lower() == 'entertain me'):
@@ -38,5 +43,7 @@ def handleViaContext(user):
 
     if (firstWord == 'directions'):
         r = confirmDirections(context)
+    elif (firstWord in SURF_STATUS):
+        r = moreSurfInfo(context):
 
     return r

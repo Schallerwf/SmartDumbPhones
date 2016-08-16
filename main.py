@@ -15,10 +15,12 @@ def main():
       curEmail = service.users().messages().get(userId='me', id=curId).execute()
       fromEmail = curEmail.get('payload').get('headers')[3].get('value').replace('<', '').replace('>', '')
       toEmail = curEmail.get('payload').get('headers')[10].get('value')
-      curRequest = base64.urlsafe_b64decode(curEmail.get('payload').get('body').get('data').encode("utf-8"))
-
-      response = handle(curRequest, fromEmail)
-      responseParts = splitMessage(response)
+      try:
+        curRequest = base64.urlsafe_b64decode(curEmail.get('payload').get('body').get('data').encode("utf-8"))
+        response = handle(curRequest, fromEmail)
+        responseParts = splitMessage(response)
+      except:
+        responseParts = ['Error. Please try again later.']
       for part in responseParts:
         message = createMessage(toEmail, fromEmail, '', part)
         sendMessage(service, 'me', message)

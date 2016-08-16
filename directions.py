@@ -8,11 +8,17 @@ def startDirections(message):
 	if (directionsResult == ''):
 		return "Error. Please be more specific. <street-or-establishment>, <city-or-zip>, <state>."
 
-	response = 'From: ' + directionsResult[0].get('legs')[0].get('start_address')
-	response += '\nTo: ' + directionsResult[0].get('legs')[0].get('end_address')
-	response += '\nDistance: ' + directionsResult[0].get('legs')[0].get('distance').get('text')
-	response += '\nDuration: ' + directionsResult[0].get('legs')[0].get('duration').get('text') 
-	response += '\nDoes this seem correct? (yes/no)'
+	response = ''
+	try:
+		response = 'From: ' + directionsResult[0].get('legs')[0].get('start_address')
+		response += '\nTo: ' + directionsResult[0].get('legs')[0].get('end_address')
+		response += '\nDistance: ' + directionsResult[0].get('legs')[0].get('distance').get('text')
+		response += '\nDuration: ' + directionsResult[0].get('legs')[0].get('duration').get('text') 
+		response += '\nDoes this seem correct? (yes/no)'
+	except:
+		print message
+		response = 'Error. Message failed. Please try again later.'
+	
 
 	return response
 
