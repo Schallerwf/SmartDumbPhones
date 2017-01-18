@@ -53,6 +53,6 @@ def logConsumable(number, item):
     with open('EatAndDrinkHistory', 'a') as output:
         output.write('{0},{1},{2}\n'.format(now(),item,number))
 
-def logPersonalLevel(level, attribute):
+def logPersonalLevel(attribute, level):
     with open('PersonalHistory', 'a') as output:
         output.write('{0},{1},{2}\n'.format(now(),attribute,level))
