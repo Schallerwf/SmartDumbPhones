@@ -9,7 +9,7 @@ def findBetween(string, first, last):
         if (last == ''):
             end = len(string)
         else:
-            end = string.index( last, start ) 
+            end = string.rfind(last) 
         return string[start:end]
     except ValueError:
         return ''
@@ -19,7 +19,11 @@ def stripHtmlTags(text):
 
 def splitMessage(message):
     parts = []
+    ndx = 0 
+    if len(message) < 121:
+        return [message]
     while message:
-        parts.append(message[:120])
-        message = message[120:]
+        parts.append('({0})'.format(ndx) + message[:115])
+        message = message[115:]
+        ndx += 1
     return parts

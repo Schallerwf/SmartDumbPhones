@@ -20,8 +20,8 @@ def helpMe(message):
         r = 'Format: translate: <text-to-be-translated> to <target-language>\n'
         r += 'Purpose: Translates text to a target language.'
     elif (command == 'textme'):
-        r = 'Format: textme <message> at <time> from <from>\n'
-        r += 'Purpose: Send yourself a message at a certain time. "At" and "from" are optional ' \
+        r = 'Format: textme <message> at <time>\n'
+        r += 'Purpose: Send yourself a message at a certain time. Time format <hh:mm MM/DD/YY>, or <hh:mm> for today. use 24 hour time' \
         'and default to now and SmartDumbPhones@gmail.com respectivly.'
     elif (command == 'help'):
         r = 'Format: help <optional-command>\n'

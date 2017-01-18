@@ -24,6 +24,8 @@ def handle(message, user):
         r = helpMe(message)
     elif (firstWord == 'more'):
         r = handleViaContext(user)
+    elif (firstWord == 'i'):
+        r = personalTracker(message)
     elif (message.strip().lower() in YES_OPTIONS):
         r = handleViaContext(user)
     elif (message.strip().lower() in SURF_STATUS):
@@ -44,6 +46,10 @@ def handleViaContext(user):
     if (firstWord == 'directions'):
         r = confirmDirections(context)
     elif (firstWord in SURF_STATUS):
-        r = moreSurfInfo(context):
+        r = moreSurfInfo(context)
 
     return r
+
+def handleChron(task, data):
+    if task == 'textme':
+        return data
