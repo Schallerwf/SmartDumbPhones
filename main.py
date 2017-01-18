@@ -39,7 +39,5 @@ def main():
             message = createMessage(thisEmail, myEmail, '', part)
             sendMessage(service, 'me', message)
 
-
-
 if __name__ == '__main__':
     main()

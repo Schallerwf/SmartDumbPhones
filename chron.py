@@ -3,7 +3,7 @@ import os
 from handle import *
 
 def writeToChronTasks(taskName, data, timeToExecute):
-    with open('chronTasks', 'w+') as chronTasks:
+    with open('chronTasks', 'a') as chronTasks:
         if taskName == 'textme':
             chronTasks.write('{0},{1},{2}'.format(timeToExecute, taskName, data))
 

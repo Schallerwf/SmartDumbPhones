@@ -1,4 +1,5 @@
 import re
+import time
 
 INVALID_COMMAND = 'Invalid command. Text "help" to see a list of valid commands.'
 YES_OPTIONS = ['y', 'yes', 'yeah', 'yep', 'yes sir', 'yep', 'yah', 'ya', 'opposite of no',]
@@ -27,3 +28,9 @@ def splitMessage(message):
         message = message[115:]
         ndx += 1
     return parts
+
+def hasNumbers(inputString):
+    return any(char.isdigit() for char in inputString)
+
+def now():
+    return int(time.time())

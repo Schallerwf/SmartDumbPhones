@@ -5,6 +5,8 @@ from util import *
 from help import *
 from bitcoin import *
 from surfline import *
+from personal import *
+from secret import *
 
 def handle(message, user):
     firstWord = message.split(' ')[0].lower()
@@ -26,6 +28,8 @@ def handle(message, user):
         r = handleViaContext(user)
     elif (firstWord == 'i'):
         r = personalTracker(message)
+    elif (firstWord in personalTrackerWords):
+        r = personalTrackerByWord(message)
     elif (message.strip().lower() in YES_OPTIONS):
         r = handleViaContext(user)
     elif (message.strip().lower() in SURF_STATUS):
