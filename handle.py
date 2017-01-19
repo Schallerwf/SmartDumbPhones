@@ -8,7 +8,7 @@ from surfline import *
 from personal import *
 from secret import *
 
-def handle(message, user):
+def handle(message, user, timeRecieved):
     firstWord = message.split(' ')[0].lower()
     r = INVALID_COMMAND
 
@@ -27,9 +27,9 @@ def handle(message, user):
     elif (firstWord == 'more'):
         r = handleViaContext(user)
     elif (firstWord == 'i'):
-        r = personalTracker(message)
+        r = personalTracker(message, timeRecieved)
     elif (firstWord in personalTrackerWords):
-        r = personalTrackerByWord(message)
+        r = personalTrackerByWord(message, timeRecieved)
     elif (message.strip().lower() in YES_OPTIONS):
         r = handleViaContext(user)
     elif (message.strip().lower() in SURF_STATUS):

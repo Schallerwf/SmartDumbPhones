@@ -15,6 +15,7 @@ def main():
     for result in results:
       curId = result.get('id')
       curEmail = service.users().messages().get(userId='me', id=curId).execute()
+      timeRecieved = recievedTimeToEpoch(curEmail.get('payload').get('headers')[7].get('value'))
       fromEmail = curEmail.get('payload').get('headers')[3].get('value').replace('<', '').replace('>', '')
       if (fromEmail != myEmail):
         print 'Email from {0}. Ignorning.'.format(fromEmail)
@@ -22,7 +23,7 @@ def main():
       toEmail = curEmail.get('payload').get('headers')[10].get('value')
       try:
         curRequest = base64.urlsafe_b64decode(curEmail.get('payload').get('body').get('data').encode("utf-8"))
-        response = handle(curRequest, fromEmail)
+        response = handle(curRequest, fromEmail, timeRecieved)
         responseParts = splitMessage(response)
       except:
         responseParts = ['Error.']

@@ -11,10 +11,10 @@ def textMe(message):
      
     return r
 
-def parseTime(time):
+def parseTime(t):
     smallPattern = '%H/%M'
-    largePattern = '%H/%M %m/%d%/y' 
-    if len(time) > 6:
-        return int(time.mktime(time.strptime(time, largePattern)))
+    largePattern = '%H/%M %m/%d/%y' 
+    if len(t) > 6:
+        return int(time.mktime(time.strptime(t, largePattern)))
     else:
-        return int(time.mktime(time.strptime(time, smallPattern)))
+        return int(time.mktime(time.strptime(t, smallPattern)))
